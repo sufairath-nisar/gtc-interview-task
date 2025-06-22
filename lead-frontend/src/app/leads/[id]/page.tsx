@@ -4,17 +4,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 
-interface Lead {
-  name: string;
-  email: string;
-  phone: string;
-  source: string;
-  submitted_at: string;
-}
+// This is the expected shape of the props in App Router
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
 
-export default async function LeadDetailPage({ params }: { params: { id: string } }) {
+export default async function LeadDetailPage({ params }: PageProps) {
   const res = await api.get(`/leads/${params.id}`);
-  const lead: Lead = res.data;
+  const lead = res.data;
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
@@ -45,7 +44,9 @@ export default async function LeadDetailPage({ params }: { params: { id: string 
           </div>
           <div>
             <Label className="text-sm text-gray-500">Submitted</Label>
-            <p className="text-base font-medium text-gray-800">{formatDate(lead.submitted_at)}</p>
+            <p className="text-base font-medium text-gray-800">
+              {formatDate(lead.submitted_at)}
+            </p>
           </div>
         </CardContent>
       </Card>
