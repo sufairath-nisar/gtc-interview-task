@@ -80,7 +80,7 @@ export default async function LeadsPage({ searchParams }: Props) {
               <TableCell>{formatDate(lead.submitted_at)}</TableCell>
               <TableCell>
                 <Link href={`/leads/${lead._id}`}>
-                  <Button variant="link" className="text-blue-600">
+                  <Button variant="link" className="text-blue-600 cursor-pointer">
                     View
                   </Button>
                 </Link>
