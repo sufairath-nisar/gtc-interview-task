@@ -1,4 +1,3 @@
-// Prevents odd inference and enforces app router behavior
 export const dynamic = 'force-dynamic';
 
 import { api } from '@/lib/api';
