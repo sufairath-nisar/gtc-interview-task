@@ -4,7 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 
-export default async function LeadDetailPage({ params }: { params: { id: string } }) {
+interface LeadDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+export default async function LeadDetailPage({ params }: LeadDetailPageProps) {
   const res = await api.get(`/leads/${params.id}`);
   const lead = res.data;
 
